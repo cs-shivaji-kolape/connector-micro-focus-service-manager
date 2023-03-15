@@ -1,0 +1,1248 @@
+{
+  "name": "micro-focus-service-manager",
+  "label": "Micro Focus Service Manager",
+  "version": "1.2.0",
+  "description": "Micro Focus service manager connector helps you to create incident, update incident, list incidents, get incident, get device list and get device",
+  "publisher": "Community",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "category": "Service Manager",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.2.0/micro-focus-service-manager/377/micro-focus-service-manager-v1-2-0",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "tooltip": "The host or domain name on which the service is available.",
+        "description": "Host or domain name on which the service is available.",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "host"
+      },
+      {
+        "title": "Initial Path",
+        "tooltip": "Initial path that is part of the URI for a given deployment. This value should start with /SM/9/rest.",
+        "description": "Initial path that is the path of URI for a given deployment. This value should start with /SM/9/rest",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "path",
+        "value": "/SM/9/rest"
+      },
+      {
+        "title": "Username",
+        "description": "Username used to connect to the Micro Focus Service Manager server to which you will connect and perform automated operations",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "username"
+      },
+      {
+        "title": "Password",
+        "description": "Password used to connect to the Micro Focus Service Manager server to which you will connect and perform automated operations",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "password"
+      },
+      {
+        "title": "Port",
+        "tooltip": "TCP port number on which service is available",
+        "description": "TCP port number on which service is available.",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "integer",
+        "name": "port",
+        "value": 13080
+      },
+      {
+        "title": "Verify SSL",
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not.\nBy default, this option is set as True.",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "value": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "create_incident",
+      "title": "Create Incident",
+      "description": "Creates a new incident on the Micro Focus Service Manager server, based on the input parameters you have specified",
+      "category": "investigation",
+      "annotation": "create_incident",
+      "output_schema": {
+        "Messages": [],
+        "ReturnCode": "",
+        "Incident": {
+          "AssignmentGroup": "",
+          "Title": "",
+          "Service": "",
+          "UpdatedBy": "",
+          "OpenedBy": "",
+          "Category": "",
+          "Assignee": "",
+          "Urgency": "",
+          "Phase": "",
+          "Description": [],
+          "UpdatedTime": "",
+          "IncidentID": "",
+          "Status": "",
+          "Impact": "",
+          "OpenTime": ""
+        }
+      },
+      "parameters": [
+        {
+          "title": "Title",
+          "tooltip": "The title of incident",
+          "description": "Title of the incident that you want to create on the Micro Focus Service Manager server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "title"
+        },
+        {
+          "title": "Description",
+          "tooltip": "Description of the incident",
+          "description": "Description of the incident that you want to create on the Micro Focus Service Manager server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "richtext",
+          "name": "description"
+        },
+        {
+          "title": "Impact",
+          "tooltip": "Impact value to be assigned to the incident",
+          "description": "Impact value to be assigned to the incident that you want to create on the Micro Focus Service Manager server.\nYou can choose from the following options: Enterprises, Site/Dept, Multiple Users, or User.\nBy default, this is set as User.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Enterprises",
+            "Site/Dept",
+            "Multiple Users",
+            "User"
+          ],
+          "name": "impact",
+          "value": "User"
+        },
+        {
+          "title": "Urgency",
+          "tooltip": "Urgency value to be assigned to the incident",
+          "description": "Urgency value to be assigned to the incident that you want to create on the Micro Focus Service Manager server.\nYou can choose from the following options: Critical, High, Average, or Low.\nBy default, this is set as Low.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Critical",
+            "High",
+            "Average",
+            "Low"
+          ],
+          "name": "urgency",
+          "value": "Low"
+        },
+        {
+          "title": "Category",
+          "tooltip": "Category of incident",
+          "description": "Category to be assigned to the incident that you want to create on the Micro Focus Service Manager server.\nFor example, Incident, Complaint, etc.\nNote: Category values can be added in lowercase.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "Placeholder": "Incident",
+          "type": "text",
+          "name": "category"
+        },
+        {
+          "title": "Primary Affected Service",
+          "tooltip": "ID of the primary service that has been affected by the incident",
+          "description": "ID of the primary service that has been affected by the incident that you want to create on the Micro Focus Service Manager server.\nFor example, CI1001020",
+          "placeholder": "CI1001020",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "service"
+        },
+        {
+          "title": "Affected CI",
+          "tooltip": "ID of the service component(s) that have been affected by the incident",
+          "description": "(Optional) ID of the service component(s) that have been affected by the incident that you want to create on the Micro Focus Service Manager server.\nFor example, CI1000783",
+          "placeholder": "CI1000783",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "affected_ci"
+        },
+        {
+          "title": "Subcategory",
+          "tooltip": "Subcategory to be assigned to the incident",
+          "description": "(Optional) Subcategory to be assigned to the incident that you want to create on the Micro Focus Service Manager server",
+          "placeholder": "SLA breach",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subcategory"
+        },
+        {
+          "title": "Area",
+          "tooltip": "The area. Example: performance, failure, hardware, access",
+          "description": "(Optional) Area to be assigned to the incident that you want to create on the Micro Focus Service Manager server.\nFor example, performance, failure, hardware, access, etc.",
+          "placeholder": "access",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "area"
+        },
+        {
+          "title": "Assignment Group",
+          "tooltip": "Assignment Group to assign created incident",
+          "description": "(Optional) Assignment Group to whom the incident that you want to create on the Micro Focus Service Manager server should be assigned.\nFor example, Office Supplies (North America).",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "Office Supplies",
+          "name": "assignment_group"
+        },
+        {
+          "title": "Source",
+          "tooltip": "Source of the incident",
+          "description": "(Optional) Source of the incident that you want to create on the Micro Focus Service Manager server.\nYou can choose from the following options: User, Group, Event, Chat, E-mail, or Telephone.\nBy default, this is set as User.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "User",
+            "Group",
+            "Event",
+            "Chat",
+            "E-mail",
+            "Telephone"
+          ],
+          "value": "User",
+          "name": "source"
+        },
+        {
+          "title": "Contact Person",
+          "tooltip": "Name of the person to contact for information about the incident",
+          "description": "(Optional) Name of the person to contact for information about the incident that you want to create on the Micro Focus Service Manager server.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "contact_person"
+        },
+        {
+          "title": "Outage Start Time",
+          "tooltip": "Time in format of MM/DD/YY HH:MM:SS Eg.08/24/18 03:30:00",
+          "description": "(Optional) Start time of the outage due to the incident that you want to create on the Micro Focus Service Manager server.\nYou must enter the time in the format MM/DD/YY HH:MM:SS\nFor example, 08/24/18 03:30:00.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "08/24/18 03:30:00",
+          "name": "outage_start_time"
+        },
+        {
+          "title": "Outage End Time",
+          "tooltip": "Time in format of MM/DD/YY HH:MM:SS Eg.08/24/18 03:30:00",
+          "description": "(Optional) End time of the outage due to the incident that you want to create on the Micro Focus Service Manager server.\nYou must enter the time in the format MM/DD/YY HH:MM:SS\nFor example, 08/24/18 05:30:00.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "08/24/18 03:30:00",
+          "name": "outage_end_time"
+        },
+        {
+          "title": "Assignee",
+          "tooltip": "Eg. Admin.General",
+          "description": "(Optional) Name of the assignee of the incident that you want to create on the Micro Focus Service Manager server.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "Admin.General",
+          "name": "assignee"
+        },
+        {
+          "title": "Service Recipient",
+          "tooltip": "Service recipient name",
+          "description": "(Optional) Name of the service recipient of the incident that you want to create on the Micro Focus Service Manager server.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "service_recipient"
+        },
+        {
+          "title": "Location",
+          "tooltip": "Location where the incident occurred",
+          "description": "(Optional) Location where the incident occurred that you want to create on the Micro Focus Service Manager server.For example, Africa, Asia, Europe.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "Asia",
+          "name": "location"
+        },
+        {
+          "title": "Solution",
+          "tooltip": "Solution (if available) to the incident",
+          "description": "(Optional) Solution (if available) to the incident that occurred and that you want to create on the Micro Focus Service Manager server.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "solution"
+        },
+        {
+          "title": "Additional Fields",
+          "tooltip": "JSON dictionary to add extra input parameters",
+          "description": "(Optional) Additional fields that you want to add to the incident record that you want to create on the Micro Focus Service Manager server.\nYou must add the additional fields in the JSON Dictionary format.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "placeholder": "{\"Urgency\": \"2\"}",
+          "type": "json",
+          "name": "json_input"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "list_incidents",
+      "title": "Get Incident List",
+      "description": "Retrieves a list of incidents from the Micro Focus Service Manager server, based on the query and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_incidents",
+      "output_schema": {
+        "@count": "",
+        "@start": "",
+        "@totalcount": "",
+        "Messages": [],
+        "ResourceName": "",
+        "ReturnCode": "",
+        "content": [
+          {
+            "Incident": {
+              "Area": "",
+              "Assignee": "",
+              "AssignmentGroup": "",
+              "Category": "",
+              "ClosedBy": "",
+              "ClosedTime": "",
+              "ClosureCode": "",
+              "Company": "",
+              "Contact": "",
+              "Description": [],
+              "Impact": "",
+              "IncidentID": "",
+              "JournalUpdates": [],
+              "OpenTime": "",
+              "OpenedBy": "",
+              "Phase": "",
+              "Service": "",
+              "Solution": [],
+              "Status": "",
+              "Subarea": "",
+              "Title": "",
+              "UpdatedBy": "",
+              "UpdatedTime": "",
+              "Urgency": ""
+            }
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "title": "Query",
+          "tooltip": "Example. Category=\"incident\" and (Title=\"Desktop screen out of order\" or Title=\"Network logon failure\")",
+          "placeholder": "Category=\"incident\"",
+          "description": "Query (or filter) that you use to specify the search criteria, based on which you want to retrieve incidents from the Micro Focus Service Manager server.\nFor example, Category = \"incident\", Title = \"Desktop screen out of order\"",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "query"
+        },
+        {
+          "title": "Sort",
+          "tooltip": "Returns the collection members in sorted order according to the arguments specified.",
+          "placeholder": "Urgency:ascending,field2:descending",
+          "description": "Sorts the result of the operation, i.e., the list of incidents retrieved from the Micro Focus Service Manager server, based on the sort fields you have specified.\nFor example, Urgency:ascending,field2:descending",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "sort"
+        },
+        {
+          "title": "Start",
+          "tooltip": "Start index of collection response, should begins with 1",
+          "description": "Index of the member from which the collection response representation begins",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "start",
+          "value": 1
+        },
+        {
+          "title": "Count",
+          "tooltip": "Indicates the number of collection members to be included in the response",
+          "description": "Number of collection members to be returned by this operation.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "count"
+        },
+        {
+          "title": "View",
+          "tooltip": "Represents a collection.",
+          "description": "View of the collection that is returned by this operation.\nYou can choose from the following options: Summary, Condense, or Expand.\nBy default, this is set as Expand.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Summary",
+            "Condense",
+            "Expand"
+          ],
+          "value": "Expand",
+          "name": "view"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_incident",
+      "title": "Get Incident",
+      "description": "Retrieves details about a specific incident from the Micro Focus Service Manager server, based on the incident ID you have specified.",
+      "category": "investigation",
+      "annotation": "get_incidents",
+      "output_schema": {
+        "Messages": [],
+        "ReturnCode": 0,
+        "Incident": {
+          "UpdatedBy": "",
+          "Status": "",
+          "SLAAgreementID": "",
+          "Urgency": "",
+          "Area": "",
+          "OpenTime": "",
+          "Location": "",
+          "ClosedTime": "",
+          "Title": "",
+          "Subarea": "",
+          "Solution": [],
+          "ClosedBy": "",
+          "OpenedBy": "",
+          "IncidentID": "",
+          "Assignee": "",
+          "Company": "",
+          "Description": [],
+          "TicketOwner": "",
+          "ProblemType": "",
+          "AssignmentGroup": "",
+          "UpdatedTime": "",
+          "Service": "",
+          "Impact": "",
+          "ClosureCode": "",
+          "Category": "",
+          "AffectedCI": ""
+        }
+      },
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident whose details you want to retrieve from the Micro Focus Service Manager server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incident_id"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "update_incident",
+      "title": "Update Incident",
+      "description": "Updates an existing incident on the Micro Focus Service Manager server, based on the input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "update_incident",
+      "output_schema": {
+        "Incident": {
+          "Area": "",
+          "Assignee": "",
+          "AssignmentGroup": "",
+          "Category": "",
+          "Company": "",
+          "Contact": "",
+          "Description": [],
+          "Impact": "",
+          "IncidentID": "",
+          "OpenTime": "",
+          "OpenedBy": "",
+          "Phase": "",
+          "Service": "",
+          "Solution": [],
+          "Status": "",
+          "Subarea": "",
+          "Title": "",
+          "UpdatedBy": "",
+          "UpdatedTime": "",
+          "Urgency": ""
+        },
+        "Messages": [],
+        "ReturnCode": ""
+      },
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "tooltip": "ID of the incident that you want to update",
+          "description": "ID of the incident that you want to update on the Micro Focus Service Manager server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incident_id"
+        },
+        {
+          "title": "Title",
+          "tooltip": "Title of the incident that you want to update",
+          "description": "(Optional) Title of the incident that you want to update on the Micro Focus Service Manager server.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "title"
+        },
+        {
+          "title": "Description",
+          "tooltip": "Description of the incident that you want to update",
+          "description": "(Optional) Description of the incident that you want to update on the Micro Focus Service Manager server.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "richtext",
+          "name": "description"
+        },
+        {
+          "title": "Impact",
+          "tooltip": "Impact value to be update to the incident",
+          "description": "(Optional) Impact value to be assigned to the incident that you want to update on the Micro Focus Service Manager server.\nYou can choose from the following options: Enterprises, Site/Dept, Multiple Users, or User.\nBy default, this is set as User.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Enterprises",
+            "Site/Dept",
+            "Multiple Users",
+            "User"
+          ],
+          "name": "impact"
+        },
+        {
+          "title": "Urgency",
+          "tooltip": "Urgency value to be update to the incident",
+          "description": "(Optional) Urgency value to be assigned to the incident that you want to update on the Micro Focus Service Manager server.\nYou can choose from the following options: Critical, High, Average, or Low.\nBy default, this is set as Low.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Critical",
+            "High",
+            "Average",
+            "Low"
+          ],
+          "name": "urgency"
+        },
+        {
+          "title": "Category",
+          "tooltip": "Category of an incident",
+          "description": "(Optional) Category to be assigned to the incident that you want to update on the Micro Focus Service Manager server.\nFor example, Incident, Complaint, etc.\nNote: Category values can be added in lowercase.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "Placeholder": "Incident",
+          "type": "text",
+          "name": "category"
+        },
+        {
+          "title": "Primary Affected Service",
+          "tooltip": "ID of the primary service that has been affected by the incident",
+          "description": "(Optional) ID of the primary service that has been affected by the incident that you want to update on the Micro Focus Service Manager server.\nFor example, CI1001020",
+          "placeholder": "CI1001020",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "service"
+        },
+        {
+          "title": "Affected CI",
+          "tooltip": "ID of the service component(s) that have been affected by the incident",
+          "description": "(Optional) ID of the service component(s) that have been affected by the incident that you want to update on the Micro Focus Service Manager server.\nFor example, CI1000783",
+          "placeholder": "CI1000783",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "affected_ci"
+        },
+        {
+          "title": "Subcategory",
+          "tooltip": "Subcategory to be assigned to the incident",
+          "description": "(Optional) Subcategory to be assigned to the incident that you want to update on the Micro Focus Service Manager server.",
+          "placeholder": "SLA breach",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "subcategory"
+        },
+        {
+          "title": "Area",
+          "tooltip": "The area. Example: performance, failure, hardware, access",
+          "description": "(Optional) Area to be assigned to the incident that you want to update on the Micro Focus Service Manager server.For example, performance, failure, hardware, access, etc.",
+          "placeholder": "performance",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "area"
+        },
+        {
+          "title": "Assignment Group",
+          "tooltip": "Assignment Group to assign created incident",
+          "description": "(Optional) Assignment Group to whom the incident that you want to update on the Micro Focus Service Manager server should be assigned.\nFor example, Office Supplies (North America).",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "assignment_group"
+        },
+        {
+          "title": "Source",
+          "tooltip": "Source of the incident",
+          "description": "(Optional) Source of the incident that you want to update on the Micro Focus Service Manager server.\nYou can choose from the following options: User, Group, Event, Chat, E-mail, or Telephone.\nBy default, this is set as User.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "User",
+            "Group",
+            "Event",
+            "Chat",
+            "E-mail",
+            "Telephone"
+          ],
+          "name": "source"
+        },
+        {
+          "title": "Contact Person",
+          "tooltip": "Name of the person to contact for information about the incident",
+          "description": "(Optional) Name of the person to contact for information about the incident that you want to update on the Micro Focus Service Manager server.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "contact_person"
+        },
+        {
+          "title": "Outage Start Time",
+          "tooltip": "Time in format of MM/DD/YY HH:MM:SS Eg.08/24/18 03:30:00",
+          "description": "(Optional) Start time of the outage due to the incident that you want to update on the Micro Focus Service Manager server.\nYou must enter the time in the format MM/DD/YY HH:MM:SS\nFor example, 08/24/18 03:30:00.",
+          "placeholder": "08/24/18 03:30:00",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "outage_start_time"
+        },
+        {
+          "title": "Outage End Time",
+          "tooltip": "Time in format of MM/DD/YY HH:MM:SS Eg.08/24/18 03:30:00",
+          "description": "(Optional) End time of the outage due to the incident that you want to update on the Micro Focus Service Manager server.\nYou must enter the time in the format MM/DD/YY HH:MM:SS\nFor example, 08/24/18 05:30:00.",
+          "placeholder": "08/24/18 03:30:00",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "outage_end_time"
+        },
+        {
+          "title": "Assignee",
+          "tooltip": "Eg. Admin.General",
+          "description": "(Optional) Name of the assignee of the incident that you want to update on the Micro Focus Service Manager server.",
+          "placeholder": "Admin.General",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "assignee"
+        },
+        {
+          "title": "Service Recipient",
+          "description": "(Optional) Name of the service recipient of the incident that you want to update on the Micro Focus Service Manager server.",
+          "tooltip": "Service recipient name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "service_recipient"
+        },
+        {
+          "title": "Location",
+          "tooltip": "Update location where the incident occurred",
+          "description": "(Optional) Location where the incident occurred that you want to update on the Micro Focus Service Manager server.\nFor example, Africa, Asia, Europe.",
+          "placeholder": "Africa",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "location"
+        },
+        {
+          "title": "Solution",
+          "tooltip": "Solution (if available) to the incident",
+          "description": "(Optional) Solution (if available) to the incident that occurred and that you want to update on the Micro Focus Service Manager server.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "solution"
+        },
+        {
+          "title": "Additional Fields",
+          "tooltip": "JSON dictionary to add extra input parameters",
+          "description": "(Optional) Additional fields that you want to add to the incident record that you want to update on the Micro Focus Service Manager server.\nYou must add the additional fields in the JSON Dictionary format.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "{\"Urgency\": \"2\"}",
+          "name": "json_input"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_device_list",
+      "title": "Get Device List",
+      "description": "Retrieves a list of devices from the Micro Focus Service Manager server, based on the query and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_devices",
+      "output_schema": {
+        "@totalcount": "",
+        "Messages": [],
+        "ResourceName": "",
+        "content": [
+          {
+            "Device": {
+              "DisplayName": "",
+              "Status": "",
+              "UpdatedBy": "",
+              "AssignmentGroup": "",
+              "ConfigurationItem": "",
+              "Vendor": "",
+              "ConfigurationItemSubType": "",
+              "Company": "",
+              "ConfigurationItemType": ""
+            }
+          }
+        ],
+        "@start": "",
+        "@count": "",
+        "ReturnCode": ""
+      },
+      "parameters": [
+        {
+          "title": "Query",
+          "tooltip": "Query to filter response",
+          "description": "Query (or filter) that you use to specify the search criteria, based on which you want to retrieve devices from the Micro Focus Service Manager server.\nFor example, Status=\"Available\"",
+          "placeholder": "Status=\"Available\"",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "query"
+        },
+        {
+          "title": "Sort",
+          "tooltip": "Returns the collection members in sorted order according to the arguments specified.",
+          "description": "Sorts the result of the operation, i.e., the list of devices retrieved from the Micro Focus Service Manager server, based on the sort fields you have specified.\nFor example, Urgency:ascending,field2:descending",
+          "placeholder": "Urgency:ascending,field2:descending",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "sort"
+        },
+        {
+          "title": "Start",
+          "tooltip": "Start index of collection response, should begins with 1",
+          "description": "Index of the member from which the collection response representation begins.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "start",
+          "value": 1
+        },
+        {
+          "title": "Count",
+          "tooltip": "Indicates the number of collection members to be included in the response",
+          "description": "Number of collection members to be returned by this operation.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "count"
+        },
+        {
+          "title": "View",
+          "tooltip": "Represents a collection.",
+          "description": "View of the collection that is returned by this operation.\nYou can choose from the following options: Summary, Condense, or Expand.\nBy default, this is set as Expand.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Summary",
+            "Condense",
+            "Expand"
+          ],
+          "value": "Expand",
+          "name": "view"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_device",
+      "title": "Get Device",
+      "description": "Retrieves details about a specific device from the Micro Focus Service Manager server, based on the configuration item you have specified.",
+      "category": "investigation",
+      "annotation": "get_devices",
+      "output_schema": {
+        "ReturnCode": "",
+        "Messages": [],
+        "Device": {
+          "DisplayName": "",
+          "Status": "",
+          "UpdatedBy": "",
+          "AssignmentGroup": "",
+          "ConfigurationItem": "",
+          "Vendor": "",
+          "ConfigurationItemSubType": "",
+          "Company": "",
+          "ConfigurationItemType": ""
+        }
+      },
+      "parameters": [
+        {
+          "title": "configuration Item",
+          "tooltip": "ID of device, configuration item of device",
+          "description": "Configuration item of the device, i.e., the ID of the device, whose details you want to retrieve from the Micro Focus Service Manager server.\nFor example, CI1000011",
+          "placeholder": "e.g. CI1000011",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "config_item"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "create_change",
+      "title": "Create Change",
+      "description": "Creates a new change request on the Service Manager server, based on the title, category, primary affected service, and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "create_change",
+      "output_schema": {
+        "Change": {
+          "close": {
+            "ClosureCode": ""
+          },
+          "header": {
+            "Open": "",
+            "Phase": "",
+            "Title": "",
+            "Reason": "",
+            "Status": "",
+            "Company": "",
+            "Category": "",
+            "ChangeID": "",
+            "PlannedEnd": "",
+            "ChangeModel": "",
+            "DateEntered": "",
+            "InitiatedBy": "",
+            "Subcategory": "",
+            "PlannedStart": "",
+            "ApprovalStatus": "",
+            "AssignmentGroup": "",
+            "ChangeCoordinator": ""
+          },
+          "middle": {},
+          "Service": "",
+          "CustomerVisible": "",
+          "description.structure": {
+            "Description": [
+            ]
+          },
+          "ChangeOriginator": ""
+        },
+        "Messages": [
+        ],
+        "ReturnCode": ""
+      },
+      "parameters": [
+        {
+          "title": "Title",
+          "tooltip": "The title of change",
+          "description": "Title of the change request that you want to create in the Micro Focus Service Manager server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Title"
+        },
+        {
+          "title": "Description",
+          "tooltip": "Description of the change request",
+          "description": "Description of the change request that you want to create in the Micro Focus Service Manager server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "richtext",
+          "name": "Description"
+        },
+        {
+          "title": "Category",
+          "tooltip": "Category of change",
+          "description": "Category to be assigned to the change request that you want to create in the Micro Focus Service Manager server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "Placeholder": "Change Request",
+          "type": "text",
+          "name": "Category"
+        },
+        {
+          "title": "Subcategory",
+          "tooltip": "Subcategory to be assigned to the change",
+          "description": "Subcategory to be assigned to the change request that you want to create in the Micro Focus Service Manager server.",
+          "placeholder": "SLA breach",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Subcategory"
+        },
+        {
+          "title": "Initiated By",
+          "tooltip": "Enter name of user who requested this change",
+          "description": "Name of the user who has initiated the change request that you want to create in the Micro Focus Service Manager server. ",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "InitiatedBy"
+        },
+        {
+          "title": "Primary Affected Service",
+          "tooltip": "ID of the primary service that has been affected by the change",
+          "description": "ID of the primary service that has been affected by the change request that you want to create in the Micro Focus Service Manager server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Service"
+        },
+        {
+          "title": "Affected CI",
+          "tooltip": "ID of the service component(s) that have been affected by the change",
+          "description": "(Optional) ID of the service component(s) that have been affected by the change request that you want to create in the Micro Focus Service Manager server.",
+          "placeholder": "CI1000783",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "AffectedCI"
+        },
+        {
+          "title": "Change Originator",
+          "tooltip": "Enter value for change originator",
+          "description": "(Optional) Enter the value of the originator of the change for which you want to create a change request in the Micro Focus Service Manager server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "ChangeOriginator"
+        },
+        {
+          "title": "Change Coordinator",
+          "tooltip": "Enter value for change Coordinator",
+          "description": "(Optional) Enter the value of the coordinator of the change for which you want to create a change request in the Micro Focus Service Manager server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "ChangeCoordinator"
+        },
+        {
+          "title": "Reason For Change",
+          "tooltip": "Enter reason for change",
+          "description": "(Optional) Enter the reason for which you want to create a change request in the Micro Focus Service Manager server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "ReasonForChange"
+        },
+        {
+          "title": "Target Start Time",
+          "description": "(Optional) Enter the target start DateTime for the change request that you want to create in the Micro Focus Service Manager server.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime",
+          "name": "PlannedStart"
+        },
+        {
+          "title": "Target End Time",
+          "description": "(Optional) Enter the target end DateTime for the change request that you want to create in the Micro Focus Service Manager server. ",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime",
+          "name": "PlannedEnd"
+        },
+        {
+          "title": "Additional Fields",
+          "tooltip": "JSON dictionary to add extra input parameters",
+          "description": "(Optional) JSON dictionary using which you can add extra input parameters to the change request that you want to create in the Micro Focus Service Manager server.For example, {\"AssignmentGroup\": \"cs\"}",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "placeholder": "{\"AssignmentGroup\": \"cs\"}",
+          "type": "json",
+          "name": "json_input"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "list_changes",
+      "title": "Get Change List",
+      "description": "Retrieves a list of all change requests or specific change requests from the Service Manager server, based on the query and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_changes",
+      "output_schema": {
+        "@count": "",
+        "@start": "",
+        "content": [
+          {
+            "Change": {
+              "close": {
+                "ClosureCode": "",
+                "ClosingComments": []
+              },
+              "header": {
+                "Open": "",
+                "Phase": "",
+                "Title": "",
+                "Reason": "",
+                "Status": "",
+                "Company": "",
+                "Category": "",
+                "ChangeID": "",
+                "Priority": "",
+                "CloseTime": "",
+                "PlannedEnd": "",
+                "ChangeModel": "",
+                "DateEntered": "",
+                "InitiatedBy": "",
+                "Subcategory": "",
+                "PlannedStart": "",
+                "ApprovalStatus": "",
+                "AssignmentGroup": "",
+                "BackoutDuration": "",
+                "ChangeCoordinator": ""
+              },
+              "middle": {},
+              "Service": "",
+              "CustomerVisible": "",
+              "description.structure": {
+                "Description": []
+              },
+              "OoredooChangeOriginator": ""
+            }
+          }
+        ],
+        "Messages": [],
+        "ReturnCode": "",
+        "@totalcount": "",
+        "ResourceName": ""
+      },
+      "parameters": [
+        {
+          "title": "Query",
+          "tooltip": "Example. (Title=\"Desktop screen out of order\" or Title=\"Network logon failure\")",
+          "description": "Query (or filter) that you use to specify the search criteria, based on which you want to retrieve change requests from the Micro Focus Service Manager server",
+          "placeholder": "Title=\"Desktop screen out of order\"",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "query"
+        },
+        {
+          "title": "Sort",
+          "tooltip": "Returns the collection members in sorted order according to the arguments specified.",
+          "description": "Sorts the result of the operation, i.e., the list of change requests retrieved from the Micro Focus Service Manager server are sorted based on the sort fields you have specified. \nFor example, Urgency:ascending,field2:descending",
+          "placeholder": "Urgency:ascending,field2:descending",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "sort"
+        },
+        {
+          "title": "Start",
+          "tooltip": "Start index of collection response, should begins with 1",
+          "description": "Index of the member from which the collection response representation begins.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "start",
+          "value": 1
+        },
+        {
+          "title": "Count",
+          "tooltip": "Indicates the number of collection members to be included in the response",
+          "description": "Number of collection members to be returned by this operation.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "count"
+        },
+        {
+          "title": "View",
+          "tooltip": "Represents a collection.",
+          "description": "View of the collection that is returned by this operation. \nYou can choose from the following options: Summary, Condense, or Expand. \nBy default, this is set as Expand.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Summary",
+            "Condense",
+            "Expand"
+          ],
+          "value": "Expand",
+          "name": "view"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_change_request",
+      "title": "Get Change Request",
+      "description": "Retrieves details for a specific change request from the Service Manager server, based on the change request ID you have specified",
+      "category": "investigation",
+      "annotation": "get_changes",
+      "output_schema": {
+        "Change": {
+          "close": {
+            "ClosureCode": "",
+            "ClosingComments": [
+            ]
+          },
+          "header": {
+            "Open": "",
+            "Phase": "",
+            "Title": "",
+            "Reason": "",
+            "Status": "",
+            "Company": "",
+            "Category": "",
+            "ChangeID": "",
+            "Priority": "",
+            "CloseTime": "",
+            "AssignedTo": "",
+            "PlannedEnd": "",
+            "ChangeModel": "",
+            "DateEntered": "",
+            "InitiatedBy": "",
+            "Subcategory": "",
+            "PlannedStart": "",
+            "ApprovalStatus": "",
+            "AssignmentGroup": "",
+            "BackoutDuration": "",
+            "ChangeCoordinator": ""
+          },
+          "middle": {},
+          "Service": "",
+          "CustomerVisible": "",
+          "description.structure": {
+            "Description": [
+            ],
+            "BackoutMethod": [
+            ]
+          },
+          "ChangeOriginator": ""
+        },
+        "Messages": [],
+        "ReturnCode": ""
+      },
+      "parameters": [
+        {
+          "title": "Change Request Number",
+          "tooltip": "ID of the change request whose details you want to retrieve",
+          "description": "ID of the change request whose details you want to retrieve from the Micro Focus Service Manager server.",
+          "placeholder": "e.g C127623",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "change_request_id"
+        }
+      ],
+      "enabled": true
+    }
+  ]
+}
+

@@ -1,0 +1,981 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - Micro Focus Service Manager - 1.2.0",
+      "description": "Sample playbooks for \"Micro Focus Service Manager\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": "",
+      "uuid": "d2d52373-a2de-42b3-ac85-e356de72338a",
+      "id": 243,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Change: Get Change List",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves a list of change requests from the Service Manager server, based on the query and other input parameters you have specified",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1660036983,
+          "collection": "/api/3/workflow_collections/d2d52373-a2de-42b3-ac85-e356de72338a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/2eabdb0c-3942-4c02-9180-c826b57a847e",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "4d2a947e-2f38-4217-a18a-22384ce09709",
+                "title": "Micro Focus Service Manager: Get Change List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "40",
+              "left": "40",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "2eabdb0c-3942-4c02-9180-c826b57a847e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Change List",
+              "description": null,
+              "arguments": {
+                "name": "Micro Focus Service Manager",
+                "config": "927fabca-4dc8-4123-b1f9-2138a18cf44a",
+                "params": {
+                  "sort": "",
+                  "view": "Expand",
+                  "count": "",
+                  "query": "",
+                  "start": 1
+                },
+                "version": "1.2.0",
+                "connector": "micro-focus-service-manager",
+                "operation": "list_changes",
+                "operationTitle": "Get Change List",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "139",
+              "left": "365",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "d86ae35d-69fe-4b60-a7bc-916e04e4210c"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Change List",
+              "targetStep": "/api/3/workflow_steps/d86ae35d-69fe-4b60-a7bc-916e04e4210c",
+              "sourceStep": "/api/3/workflow_steps/2eabdb0c-3942-4c02-9180-c826b57a847e",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "30bcc37a-0d36-4070-a599-fd992dd72a7f"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "0d2ccedb-ee1b-41a6-a7ed-73897aa68a12",
+          "id": 2349,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "MicroFocus",
+            "micro-focus-service-manager"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Device: Get Device List",
+          "aliasName": null,
+          "tag": "#Micro Focus Service Manager",
+          "description": "Retrieves a list of devices from the Micro Focus Service Manager server, based on the query and other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1660036983,
+          "collection": "/api/3/workflow_collections/d2d52373-a2de-42b3-ac85-e356de72338a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/53d114d2-0eb8-4882-af34-a107b5d096de",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "e29481a8-5e12-4159-8821-4e355d9a4042",
+                "title": "Micro Focus Service Manager: Get Device List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "53d114d2-0eb8-4882-af34-a107b5d096de"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Device List",
+              "description": null,
+              "arguments": {
+                "name": "Micro Focus Service Manager",
+                "config": "14d9adcd-27f5-452c-a815-fa0d1839a257",
+                "params": {
+                  "sort": "",
+                  "view": "Expand",
+                  "count": 10,
+                  "query": "",
+                  "start": 1
+                },
+                "version": "1.2.0",
+                "connector": "micro-focus-service-manager",
+                "operation": "get_device_list",
+                "operationTitle": "Get Device List",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "115",
+              "left": "164",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "de43c898-d718-46b6-b5a3-03d5234b88f1"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Device List",
+              "targetStep": "/api/3/workflow_steps/de43c898-d718-46b6-b5a3-03d5234b88f1",
+              "sourceStep": "/api/3/workflow_steps/53d114d2-0eb8-4882-af34-a107b5d096de",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "0eb7eca3-9743-4b9e-9f43-e6ed84f92eb1"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "1e251543-c938-44c5-9339-492f7b7b7057",
+          "id": 2356,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "MicroFocus",
+            "micro-focus-service-manager"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Change: Create Change",
+          "aliasName": null,
+          "tag": null,
+          "description": "Creates a new change request on the Service Manager server, based on the input parameters you have specified",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1660036983,
+          "collection": "/api/3/workflow_collections/d2d52373-a2de-42b3-ac85-e356de72338a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/a2e4faa8-7163-4ed6-9ca9-9fd0f5133afd",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Change",
+              "description": null,
+              "arguments": {
+                "name": "Micro Focus Service Manager",
+                "config": "927fabca-4dc8-4123-b1f9-2138a18cf44a",
+                "params": {
+                  "Title": "sample change using playbook",
+                  "Service": "Network Secuirty",
+                  "Category": "Standard Change",
+                  "AffectedCI": "",
+                  "PlannedEnd": "",
+                  "json_input": "{\n  \"Assingnment Group\": \"cs\",\n  \"ChangeModel\": \"Standard Change\",\n  \"Phase\": \"Change Logging\"\n}",
+                  "Description": "creating sample change",
+                  "InitiatedBy": "admin",
+                  "Subcategory": "Adding Configuration",
+                  "PlannedStart": "",
+                  "ReasonForChange": "testing connector",
+                  "ChangeOriginator": "admin",
+                  "ChangeCoordinator": "dbadmin"
+                },
+                "version": "1.2.0",
+                "connector": "micro-focus-service-manager",
+                "operation": "create_change",
+                "operationTitle": "Create Change",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "142",
+              "left": "357",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "772ce8bc-6289-46a3-8384-f43eb38c7fc7"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "d9741e41-913e-42f5-9098-8ffc18aee105",
+                "title": "Micro Focus Service Manager: Create Change",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "40",
+              "left": "40",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "a2e4faa8-7163-4ed6-9ca9-9fd0f5133afd"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Create Change",
+              "targetStep": "/api/3/workflow_steps/772ce8bc-6289-46a3-8384-f43eb38c7fc7",
+              "sourceStep": "/api/3/workflow_steps/a2e4faa8-7163-4ed6-9ca9-9fd0f5133afd",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "1eb487f6-ae05-4724-95d8-96f919cb7051"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "50c2a0bf-7625-42f8-92d6-9d2ef0707dae",
+          "id": 2352,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "MicroFocus",
+            "micro-focus-service-manager"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Incident: Get Incident",
+          "aliasName": null,
+          "tag": "#Micro Focus Service Manager",
+          "description": "Retrieves details about a specific incident from the Micro Focus Service Manager server, based on the incident ID you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1660036983,
+          "collection": "/api/3/workflow_collections/d2d52373-a2de-42b3-ac85-e356de72338a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/af882412-e4b4-47bf-ae74-24da858353a6",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "9dc8b932-07d0-4c90-95a7-9748a32e648a",
+                "title": "Micro Focus Service Manager: Get Incident",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "af882412-e4b4-47bf-ae74-24da858353a6"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident",
+              "description": null,
+              "arguments": {
+                "name": "Micro Focus Service Manager",
+                "config": "14d9adcd-27f5-452c-a815-fa0d1839a257",
+                "params": {
+                  "incident_id": "IM10287"
+                },
+                "version": "1.2.0",
+                "connector": "micro-focus-service-manager",
+                "operation": "get_incident",
+                "operationTitle": "Get Incident",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "216",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "fefe9b6d-868f-435a-9bab-169a3e1e8fdf"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Incident",
+              "targetStep": "/api/3/workflow_steps/fefe9b6d-868f-435a-9bab-169a3e1e8fdf",
+              "sourceStep": "/api/3/workflow_steps/af882412-e4b4-47bf-ae74-24da858353a6",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "52bc54eb-8cc1-45a7-97b7-1ba756449b2b"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "8d4fe46a-e05e-44ea-8b5a-06e6efc7e7f4",
+          "id": 2354,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "MicroFocus",
+            "micro-focus-service-manager"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Change: Get Change Request",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves details about a specific change request from the Service Manager server, based on the Change Request ID you have specified",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1660036983,
+          "collection": "/api/3/workflow_collections/d2d52373-a2de-42b3-ac85-e356de72338a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/5bbc9487-5355-4b6a-bc16-c6f3d115ad71",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "92c2f1cb-ebbf-484c-8c30-64c1b2855454",
+                "title": "Micro Focus Service Manager: Get Change Request",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "40",
+              "left": "40",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "5bbc9487-5355-4b6a-bc16-c6f3d115ad71"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Change Request",
+              "description": null,
+              "arguments": {
+                "name": "Micro Focus Service Manager",
+                "config": "927fabca-4dc8-4123-b1f9-2138a18cf44a",
+                "params": {
+                  "change_request_id": "C123422"
+                },
+                "version": "1.2.0",
+                "connector": "micro-focus-service-manager",
+                "operation": "get_change_request",
+                "operationTitle": "Get Change Request",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "201",
+              "left": "389",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "cac953f7-0a02-46c6-b761-74eddf20d744"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Change Request",
+              "targetStep": "/api/3/workflow_steps/cac953f7-0a02-46c6-b761-74eddf20d744",
+              "sourceStep": "/api/3/workflow_steps/5bbc9487-5355-4b6a-bc16-c6f3d115ad71",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "c3c13a77-4af3-4cb9-9c65-756b5b300efc"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "91ea7764-fe54-4134-ac44-96264cc47534",
+          "id": 2351,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "MicroFocus",
+            "micro-focus-service-manager"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Incident: Create Incident",
+          "aliasName": null,
+          "tag": "#Micro Focus Service Manager",
+          "description": "Creates a new incident on the Micro Focus Service Manager server, based on the input parameters you have specified",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1660036983,
+          "collection": "/api/3/workflow_collections/d2d52373-a2de-42b3-ac85-e356de72338a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/faaa92df-212f-4220-9ce2-f0f153aa67fb",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Incident",
+              "description": null,
+              "arguments": {
+                "name": "Micro Focus Service Manager",
+                "config": "14d9adcd-27f5-452c-a815-fa0d1839a257",
+                "params": {
+                  "area": "",
+                  "title": "Incident",
+                  "impact": "User",
+                  "source": "",
+                  "service": "CI1001020",
+                  "urgency": "Low",
+                  "assignee": "",
+                  "category": "incident",
+                  "location": "",
+                  "solution": "",
+                  "json_input": "{\"Urgency\": \"2\"}",
+                  "affected_ci": "",
+                  "description": "Incident creation",
+                  "subcategory": "",
+                  "contact_person": "",
+                  "outage_end_time": "",
+                  "assignment_group": "",
+                  "outage_start_time": "",
+                  "service_recipient": ""
+                },
+                "version": "1.2.0",
+                "connector": "micro-focus-service-manager",
+                "operation": "create_incident",
+                "operationTitle": "Create Incident",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "140",
+              "left": "211",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "d7ba79c9-8ec9-409d-b2a9-c2cd7ebc816f"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "f9606976-c10f-436c-a8aa-fe4e8ee974e5",
+                "title": "Micro Focus Service Manager: Create Incident",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "faaa92df-212f-4220-9ce2-f0f153aa67fb"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Create Incident",
+              "targetStep": "/api/3/workflow_steps/d7ba79c9-8ec9-409d-b2a9-c2cd7ebc816f",
+              "sourceStep": "/api/3/workflow_steps/faaa92df-212f-4220-9ce2-f0f153aa67fb",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "44682f89-a8c8-4538-bec7-e22ee7bd7ce2"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "ab315a59-6755-4597-8f0c-ae366334e393",
+          "id": 2355,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "MicroFocus",
+            "micro-focus-service-manager"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Device: Get Device",
+          "aliasName": null,
+          "tag": "#Micro Focus Service Manager",
+          "description": "Retrieves details about a specific device from the Micro Focus Service Manager server, based on the configuration item you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1660036983,
+          "collection": "/api/3/workflow_collections/d2d52373-a2de-42b3-ac85-e356de72338a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/77af24eb-b100-4f53-ac8e-21ce5d5447b3",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "fdeca103-8935-4475-b2e9-93cfde5c0bd5",
+                "title": "Micro Focus Service Manager: Get Device",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "77af24eb-b100-4f53-ac8e-21ce5d5447b3"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Device",
+              "description": null,
+              "arguments": {
+                "name": "Micro Focus Service Manager",
+                "config": "14d9adcd-27f5-452c-a815-fa0d1839a257",
+                "params": {
+                  "config_item": "CI1000001"
+                },
+                "version": "1.2.0",
+                "connector": "micro-focus-service-manager",
+                "operation": "get_device",
+                "operationTitle": "Get Device",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "200",
+              "left": "240",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "eb40b102-d3ab-4c5c-9391-5ab7159c44e0"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Device",
+              "targetStep": "/api/3/workflow_steps/eb40b102-d3ab-4c5c-9391-5ab7159c44e0",
+              "sourceStep": "/api/3/workflow_steps/77af24eb-b100-4f53-ac8e-21ce5d5447b3",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "49704d3e-7a2c-4dd6-9263-f3013eb91b48"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "adf9c48b-e230-414b-bf95-2fc078040ab7",
+          "id": 2357,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "MicroFocus",
+            "micro-focus-service-manager"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Incident: Get Incident List",
+          "aliasName": null,
+          "tag": "#Micro Focus Service Manager",
+          "description": "Retrieves a list of incidents from the Micro Focus Service Manager server, based on the query and other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1660036983,
+          "collection": "/api/3/workflow_collections/d2d52373-a2de-42b3-ac85-e356de72338a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/fe593d79-1136-450f-afc4-e9217c20d110",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident List",
+              "description": null,
+              "arguments": {
+                "name": "Micro Focus Service Manager",
+                "config": "14d9adcd-27f5-452c-a815-fa0d1839a257",
+                "params": {
+                  "sort": "",
+                  "view": "Expand",
+                  "count": 10,
+                  "query": "",
+                  "start": 1
+                },
+                "version": "1.2.0",
+                "connector": "micro-focus-service-manager",
+                "operation": "list_incidents",
+                "operationTitle": "Get Incident List",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "220",
+              "left": "200",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "bbdbaafc-689c-4f31-aa3e-3df86e73917e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "419f2390-eff2-4cf8-8e1d-128f26a81e64",
+                "title": "Micro Focus Service Manager: Get Incident List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "54",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "fe593d79-1136-450f-afc4-e9217c20d110"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Incident List",
+              "targetStep": "/api/3/workflow_steps/bbdbaafc-689c-4f31-aa3e-3df86e73917e",
+              "sourceStep": "/api/3/workflow_steps/fe593d79-1136-450f-afc4-e9217c20d110",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "53b055c1-ab49-4270-a55d-1603b79ca02f"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "c3620787-a800-41ac-a065-3cdb1b65c0f9",
+          "id": 2350,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "MicroFocus",
+            "micro-focus-service-manager"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Incident: Update Incident",
+          "aliasName": null,
+          "tag": "#Micro Focus Service Manager",
+          "description": "Updates an existing incident on the Micro Focus Service Manager server, based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1660036983,
+          "collection": "/api/3/workflow_collections/d2d52373-a2de-42b3-ac85-e356de72338a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/0cd0d718-03cb-4968-a139-9ec1dfe58d59",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "0392109a-9f06-4e93-8cd3-28af2b6547a9",
+                "title": "Micro Focus Service Manager: Update Incident",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "0cd0d718-03cb-4968-a139-9ec1dfe58d59"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Incident",
+              "description": null,
+              "arguments": {
+                "name": "Micro Focus Service Manager",
+                "config": "a2ff0028-0283-4345-88c7-d93a625fd9e8",
+                "params": {
+                  "area": "",
+                  "title": "",
+                  "impact": "",
+                  "source": "",
+                  "service": "",
+                  "urgency": "",
+                  "assignee": "",
+                  "category": "",
+                  "location": "",
+                  "solution": "",
+                  "json_input": "",
+                  "affected_ci": "",
+                  "description": "",
+                  "incident_id": "IM10066",
+                  "subcategory": "",
+                  "contact_person": "",
+                  "outage_end_time": "",
+                  "assignment_group": "",
+                  "outage_start_time": "",
+                  "service_recipient": ""
+                },
+                "version": "1.2.0",
+                "connector": "micro-focus-service-manager",
+                "operation": "update_incident",
+                "operationTitle": "Update Incident",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "140",
+              "left": "220",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "abaaa653-c76f-4719-8b83-6f8f4e3d6431"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Update Incident",
+              "targetStep": "/api/3/workflow_steps/abaaa653-c76f-4719-8b83-6f8f4e3d6431",
+              "sourceStep": "/api/3/workflow_steps/0cd0d718-03cb-4968-a139-9ec1dfe58d59",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "c96c36db-fdd8-4f95-a510-4f5d7000acf0"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "d56cc8c3-15d8-4399-aa0f-caef0d153bf1",
+          "id": 2353,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "MicroFocus",
+            "micro-focus-service-manager"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "MicroFocus",
+    "micro-focus-service-manager"
+  ]
+}
