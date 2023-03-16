@@ -528,14 +528,14 @@
           "name": "Get RF",
           "aliasName": null,
           "tag": null,
-          "description": null,
+          "description": "Fetch RF data based on RF number provided by user",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1678951535,
+          "lastModifyDate": 1678953608,
           "collection": "/api/3/workflow_collections/d2d52373-a2de-42b3-ac85-e356de72338a",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/c0b263d0-58dd-481a-92ed-ab23d2ba6050",
@@ -619,7 +619,10 @@
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
-          "recordTags": []
+          "recordTags": [
+            "MicroFocus",
+            "micro-focus-service-manager"
+          ]
         },
         {
           "@type": "Workflow",
@@ -849,14 +852,14 @@
           "name": "Update RF",
           "aliasName": null,
           "tag": null,
-          "description": null,
+          "description": "Update RF with an attachment",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1678952019,
+          "lastModifyDate": 1678953998,
           "collection": "/api/3/workflow_collections/d2d52373-a2de-42b3-ac85-e356de72338a",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/df0527ed-3928-49ba-8979-9df22479eada",
@@ -974,7 +977,10 @@
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
-          "recordTags": []
+          "recordTags": [
+            "MicroFocus",
+            "micro-focus-service-manager"
+          ]
         },
         {
           "@type": "Workflow",
@@ -982,14 +988,14 @@
           "name": "Update Change",
           "aliasName": null,
           "tag": null,
-          "description": null,
+          "description": "Update change for closure based on input parameter provided by user",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1678951630,
+          "lastModifyDate": 1678953971,
           "collection": "/api/3/workflow_collections/d2d52373-a2de-42b3-ac85-e356de72338a",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/6604bd55-400a-4728-92e2-a2d0f940f688",
@@ -1079,7 +1085,10 @@
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
-          "recordTags": []
+          "recordTags": [
+            "MicroFocus",
+            "micro-focus-service-manager"
+          ]
         },
         {
           "@type": "Workflow",
@@ -1193,14 +1202,14 @@
           "name": "Create RF",
           "aliasName": null,
           "tag": null,
-          "description": null,
+          "description": "Creates an RF request based on inputs provided by user",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1678951765,
+          "lastModifyDate": 1678953923,
           "collection": "/api/3/workflow_collections/d2d52373-a2de-42b3-ac85-e356de72338a",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/4419d1b4-0591-4d7e-8a37-702f9e5d579e",
@@ -1294,7 +1303,10 @@
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
-          "recordTags": []
+          "recordTags": [
+            "MicroFocus",
+            "micro-focus-service-manager"
+          ]
         },
         {
           "@type": "Workflow",
