@@ -1242,7 +1242,378 @@
         }
       ],
       "enabled": true
+    },
+    {
+      "operation": "get_rf",
+      "title": "Get RF",
+      "description": "Retrieves details for a specific RF request from the MFSM/HPSM server, based on the RF ID you have specified",
+      "category": "investigation",
+      "annotation": "get_requests",
+      "output_schema": {
+        "Request": {
+          "Open": "",
+          "Impact": "",
+          "Number": "",
+          "Status": "",
+          "Urgency": "",
+          "Category": "",
+          "Priority": "",
+          "SlaBreach": "",
+          "AssignedTo": "",
+          "SubmitDate": "",
+          "UpdateDate": "",
+          "CustVisible": "",
+          "Description": [],
+          "ProductType": "",
+          "Subcategory": "",
+          "AgreementIds": [],
+          "CurrentPhase": "",
+          "DeliveryDate": "",
+          "AssignedGroup": "",
+          "RequestorName": "",
+          "ApprovalStatus": "",
+          "BriefDescription": ""
+        },
+        "Messages": [],
+        "ReturnCode": ""
+      },
+      "parameters": [
+        {
+          "title": "RF Number",
+          "tooltip": "ID of the RF whose details you want to retrieve",
+          "description": "ID of the request whose details you want to retrieve from the Micro Focus Service Manager server.",
+          "placeholder": "RF138474",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "rf_id"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "create_rf",
+      "title": "Create RF",
+      "description": "Creates a new RF on the MFSM/HPSM Manager server, based on the input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "create_rf",
+      "output_schema": {
+        "Request": {
+          "Open": "",
+          "Impact": "",
+          "Number": "",
+          "Status": "",
+          "Urgency": "",
+          "Category": "",
+          "Priority": "",
+          "SlaBreach": "",
+          "AssignedTo": "",
+          "SubmitDate": "",
+          "UpdateDate": "",
+          "CustVisible": "",
+          "Description": [],
+          "ProductType": "",
+          "Subcategory": "",
+          "AgreementIds": [],
+          "CurrentPhase": "",
+          "DeliveryDate": "",
+          "AssignedGroup": "",
+          "RequestorName": "",
+          "ApprovalStatus": "",
+          "BriefDescription": ""
+        },
+        "Messages": [],
+        "ReturnCode": ""
+      },
+      "parameters": [
+        {
+          "title": "Title or Brief Description",
+          "tooltip": "The title or Brief Description of the RF",
+          "description": "Title of the RF/Brief Description",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "BriefDescription"
+        },
+        {
+          "title": "Description",
+          "tooltip": "Description of the RF",
+          "description": "Description of the RF",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Description"
+        },
+        {
+          "title": "Category",
+          "tooltip": "Category of RF",
+          "description": "Category to be assigned to the RF",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "Placeholder": "Request Fullfillment",
+          "type": "text",
+          "name": "Category"
+        },
+        {
+          "title": "Subcategory",
+          "tooltip": "Subcategory to be assigned to the RF",
+          "description": "Subcategory to be assigned to the RF.",
+          "placeholder": "other",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Subcategory"
+        },
+        {
+          "title": "AssignedTo",
+          "tooltip": "Enter name of user to whom RF is assigned",
+          "description": "Name of the user who will look after the RF",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "AssignedTo"
+        },
+        {
+          "title": "AssignedGroup",
+          "tooltip": "ID of RF assigned Group",
+          "description": "ID of the RF assigned group",
+          "placeholder": "CSC",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "AssignedGroup"
+        },
+        {
+          "title": "Impact",
+          "tooltip": "Impact number of the RF",
+          "description": "Impact number of the RF",
+          "placeholder": "4",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Impact"
+        },
+        {
+          "title": "Priority",
+          "tooltip": "Priority number of the RF",
+          "description": "Priority number of the RF",
+          "placeholder": "4",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Priority"
+        },
+        {
+          "title": "Urgency",
+          "tooltip": "Urgency of the RF",
+          "description": "Urgency of the RF",
+          "placeholder": "4",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Urgency"
+        },
+        {
+          "title": "Product Type",
+          "tooltip": "Product Type of the RF",
+          "description": "Product Type of the RF",
+          "placeholder": "other",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "ProductType"
+        },
+        {
+          "title": "RequestorName",
+          "tooltip": "Requester of the RF",
+          "description": "Requester of the",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "RequestorName"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "update_change",
+      "title": "Update Change",
+      "description": "Updates an existing change for closure",
+      "category": "investigation",
+      "annotation": "update_change",
+      "output_schema": {
+        "SubClosureCode": "",
+        "Change": {
+          "close": {
+            "ClosureCode": "",
+            "ClosingComments": []
+          },
+          "header": {
+            "Open": "",
+            "Phase": "",
+            "Title": "",
+            "Reason": "",
+            "Status": "",
+            "Company": "",
+            "Category": "",
+            "ChangeID": "",
+            "CloseTime": "",
+            "PlannedEnd": "",
+            "ChangeModel": "",
+            "DateEntered": "",
+            "InitiatedBy": "",
+            "Subcategory": "",
+            "PlannedStart": "",
+            "ApprovalStatus": "",
+            "AssignmentGroup": "",
+            "ChangeCoordinator": ""
+          },
+          "middle": {},
+          "Service": "",
+          "CustomerVisible": "",
+          "description.structure": {
+            "Description": []
+          },
+          "OoredooChangeOriginator": ""
+        },
+        "Messages": [],
+        "ReturnCode": ""
+      },
+      "parameters": [
+        {
+          "title": "Change ID",
+          "tooltip": "ID of the change request, you want to close",
+          "description": "ID of the change request, you want to close",
+          "placeholder": "e.g C127623",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "change_id"
+        },
+        {
+          "title": "Closure Code",
+          "tooltip": "Closure Code for the change request",
+          "description": "Closure Code for the change request",
+          "required": true,
+          "Placeholder": 1,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "ClosureCode"
+        },
+        {
+          "title": "SubClosure Code",
+          "tooltip": "Sub Closure Code for the change request",
+          "description": "Sub Closure Code for the change request",
+          "required": true,
+          "Placeholder": "No Issues",
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "SubClosureCode"
+        },
+        {
+          "title": "Closing Comments",
+          "tooltip": "Closing Comments for the change you want to close",
+          "description": "Closing Comments for the change you want to close",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "ClosingComments"
+        },
+        {
+          "title": "Phase",
+          "tooltip": "Phase of the change like logging, approve, close etc.",
+          "description": "Phase of the change like logging, approve, close etc",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Phase"
+        },
+        {
+          "title": "Actual Start Time",
+          "description": "(Optional) Enter the actual start DateTime for the change request that you want to create in the Micro Focus Service Manager server.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime",
+          "name": "PlannedStart"
+        },
+        {
+          "title": "Actual End Time",
+          "description": "(Optional) Enter the actual end DateTime for the change request that you want to create in the Micro Focus Service Manager server. ",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime",
+          "name": "PlannedEnd"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "update_rf_attachment",
+      "title": "Update RF for attachment",
+      "description": "Updates an existing RF to upload an attachment",
+      "category": "investigation",
+      "annotation": "update_rf_attachment",
+      "output_schema": {
+        "Messages": [],
+        "ReturnCode": "",
+        "ResourceName": "",
+        "content": []
+      },
+      "parameters": [
+        {
+          "title": "RF ID",
+          "tooltip": "ID of the RF request",
+          "description": "ID of the RF request",
+          "placeholder": "e.g RF138474",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "rf_id"
+        },
+        {
+          "title": "Attachment Name",
+          "tooltip": "Attachment name of the RF request",
+          "description": "Attachment name of the RF request",
+          "placeholder": "eml_as_attach.eml",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "attachment_name"
+        },
+        {
+          "title": "Message Body",
+          "tooltip": "Content of the file to be uploaded",
+          "description": "Content of the file  to be uploaded",
+          "placeholder": "raw file data",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "textarea",
+          "name": "msg_body"
+        }
+      ],
+      "enabled": true
     }
   ]
 }
-
