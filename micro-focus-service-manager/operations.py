@@ -261,7 +261,7 @@ def create_rf(config, params):
     try:
         payload_request = {}
         fields = ['Impact', 'Urgency', 'Priority', 'Category', 'Subcategory', 'BriefDescription', 'AssignedTo',
-                  'AssignedGroup', 'RequestorName']
+                  'AssignedGroup', 'RequestorName', 'ProductType']
         for field in fields:
             payload_request[field] = str(params.get(field))
 
