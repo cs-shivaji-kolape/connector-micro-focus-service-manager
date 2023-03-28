@@ -279,21 +279,12 @@ def update_rf_attachment(config, params):
     try:
         param_attachment_name = params.get('attachment_name')
         body = params.get('msg_body')
-        # logger.info('body {}'.format(body))
-        # logger.info('body {}'.format(type(body)))
-
         url = 'requests/{}/attachments/cid:{}'.format(params.pop('rf_id'), param_attachment_name)
-        logger.info('******** URL {}'.format(url))
-
-        #  body = json.dumps(body)
 
         extra_header = {
             'Content-Disposition': 'attachment;filename=' + param_attachment_name,
             'Content-Type': 'application/vnd.ms-outlook'
         }
-
-        logger.info('****** Extra Headers {}'.format(extra_header))
-
         return make_rest_call(config, 'post', url, body, extra_header)
 
     except Exception as err:
@@ -336,6 +327,7 @@ operations = {
     'list_changes': list_changes,
     'get_rf': get_rf_request,
     'create_rf': create_rf,
-    'update_change': update_change,
-    'update_rf_attachment': update_rf_attachment
+    'update_rf_attachment': update_rf_attachment,
+    'update_change': update_change
+
 }

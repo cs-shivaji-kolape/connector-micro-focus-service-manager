@@ -3,10 +3,10 @@
   "label": "Micro Focus Service Manager",
   "version": "1.3.0",
   "description": "Micro Focus service manager connector helps you to create incident, update incident, list incidents, get incident, get device list and get device",
-  "publisher": "Community",
+  "publisher": "Fortinet",
   "cs_approved": false,
   "cs_compatible": true,
-  "category": "Service Manager",
+  "category": "IT Service Management",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "help_online": "",
@@ -1244,210 +1244,6 @@
       "enabled": true
     },
     {
-      "operation": "get_rf",
-      "title": "Get RF",
-      "description": "Retrieves details for a specific RF request from the MFSM/HPSM server, based on the RF ID you have specified",
-      "category": "investigation",
-      "annotation": "get_requests",
-      "output_schema": {
-        "Request": {
-          "Open": "",
-          "Impact": "",
-          "Number": "",
-          "Status": "",
-          "Urgency": "",
-          "Category": "",
-          "Priority": "",
-          "SlaBreach": "",
-          "AssignedTo": "",
-          "SubmitDate": "",
-          "UpdateDate": "",
-          "CustVisible": "",
-          "Description": [],
-          "ProductType": "",
-          "Subcategory": "",
-          "AgreementIds": [],
-          "CurrentPhase": "",
-          "DeliveryDate": "",
-          "AssignedGroup": "",
-          "RequestorName": "",
-          "ApprovalStatus": "",
-          "BriefDescription": ""
-        },
-        "Messages": [],
-        "ReturnCode": ""
-      },
-      "parameters": [
-        {
-          "title": "RF Number",
-          "tooltip": "ID of the RF whose details you want to retrieve",
-          "description": "ID of the request whose details you want to retrieve from the Micro Focus Service Manager server.",
-          "placeholder": "RF138474",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "rf_id"
-        }
-      ],
-      "enabled": true
-    },
-    {
-      "operation": "create_rf",
-      "title": "Create RF",
-      "description": "Creates a new RF on the MFSM/HPSM Manager server, based on the input parameters you have specified.",
-      "category": "investigation",
-      "annotation": "create_rf",
-      "output_schema": {
-        "Request": {
-          "Open": "",
-          "Impact": "",
-          "Number": "",
-          "Status": "",
-          "Urgency": "",
-          "Category": "",
-          "Priority": "",
-          "SlaBreach": "",
-          "AssignedTo": "",
-          "SubmitDate": "",
-          "UpdateDate": "",
-          "CustVisible": "",
-          "Description": [],
-          "ProductType": "",
-          "Subcategory": "",
-          "AgreementIds": [],
-          "CurrentPhase": "",
-          "DeliveryDate": "",
-          "AssignedGroup": "",
-          "RequestorName": "",
-          "ApprovalStatus": "",
-          "BriefDescription": ""
-        },
-        "Messages": [],
-        "ReturnCode": ""
-      },
-      "parameters": [
-        {
-          "title": "Title or Brief Description",
-          "tooltip": "The title or Brief Description of the RF",
-          "description": "Title of the RF/Brief Description",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "BriefDescription"
-        },
-        {
-          "title": "Description",
-          "tooltip": "Description of the RF",
-          "description": "Description of the RF",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "Description"
-        },
-        {
-          "title": "Category",
-          "tooltip": "Category of RF",
-          "description": "Category to be assigned to the RF",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "Placeholder": "Request Fullfillment",
-          "type": "text",
-          "name": "Category"
-        },
-        {
-          "title": "Subcategory",
-          "tooltip": "Subcategory to be assigned to the RF",
-          "description": "Subcategory to be assigned to the RF.",
-          "placeholder": "other",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "Subcategory"
-        },
-        {
-          "title": "AssignedTo",
-          "tooltip": "Enter name of user to whom RF is assigned",
-          "description": "Name of the user who will look after the RF",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "AssignedTo"
-        },
-        {
-          "title": "AssignedGroup",
-          "tooltip": "ID of RF assigned Group",
-          "description": "ID of the RF assigned group",
-          "placeholder": "CSC",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "AssignedGroup"
-        },
-        {
-          "title": "Impact",
-          "tooltip": "Impact number of the RF",
-          "description": "Impact number of the RF",
-          "placeholder": "4",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "Impact"
-        },
-        {
-          "title": "Priority",
-          "tooltip": "Priority number of the RF",
-          "description": "Priority number of the RF",
-          "placeholder": "4",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "Priority"
-        },
-        {
-          "title": "Urgency",
-          "tooltip": "Urgency of the RF",
-          "description": "Urgency of the RF",
-          "placeholder": "4",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "Urgency"
-        },
-        {
-          "title": "Product Type",
-          "tooltip": "Product Type of the RF",
-          "description": "Product Type of the RF",
-          "placeholder": "other",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "ProductType"
-        },
-        {
-          "title": "RequestorName",
-          "tooltip": "Requester of the RF",
-          "description": "Requester of the",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "RequestorName"
-        }
-      ],
-      "enabled": true
-    },
-    {
       "operation": "update_change",
       "title": "Update Change",
       "description": "Updates an existing change for closure",
@@ -1567,9 +1363,213 @@
       "enabled": true
     },
     {
+      "operation": "create_rf",
+      "title": "Create RF - Request Fulfillment Ticket",
+      "description": "Creates a new RF - Request Fulfillment Ticket on the MFSM/HPSM Manager server, based on the input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "create_rf",
+      "output_schema": {
+        "Request": {
+          "Open": "",
+          "Impact": "",
+          "Number": "",
+          "Status": "",
+          "Urgency": "",
+          "Category": "",
+          "Priority": "",
+          "SlaBreach": "",
+          "AssignedTo": "",
+          "SubmitDate": "",
+          "UpdateDate": "",
+          "CustVisible": "",
+          "Description": [],
+          "ProductType": "",
+          "Subcategory": "",
+          "AgreementIds": [],
+          "CurrentPhase": "",
+          "DeliveryDate": "",
+          "AssignedGroup": "",
+          "RequestorName": "",
+          "ApprovalStatus": "",
+          "BriefDescription": ""
+        },
+        "Messages": [],
+        "ReturnCode": ""
+      },
+      "parameters": [
+        {
+          "title": "Title or Brief Description",
+          "tooltip": "The title or Brief Description of the RF",
+          "description": "Title of the RF/Brief Description",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "BriefDescription"
+        },
+        {
+          "title": "Description",
+          "tooltip": "Description of the RF",
+          "description": "Description of the RF",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Description"
+        },
+        {
+          "title": "Category",
+          "tooltip": "Category of RF",
+          "description": "Category to be assigned to the RF",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "Placeholder": "Request Fullfillment",
+          "type": "text",
+          "name": "Category"
+        },
+        {
+          "title": "Subcategory",
+          "tooltip": "Subcategory to be assigned to the RF",
+          "description": "Subcategory to be assigned to the RF.",
+          "placeholder": "other",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Subcategory"
+        },
+        {
+          "title": "Assigned To",
+          "tooltip": "Enter name of user to whom RF-Request Fulfillment Ticket is assigned",
+          "description": "Name of the user who will look after the RF",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "AssignedTo"
+        },
+        {
+          "title": "Assigned Group",
+          "tooltip": "ID of RF-Request Fulfillment Ticket assigned Group",
+          "description": "ID of the RF-Request Fulfillment Ticket assigned group",
+          "placeholder": "CSC",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "AssignedGroup"
+        },
+        {
+          "title": "Impact",
+          "tooltip": "Impact number of the RF",
+          "description": "Impact number of the RF ,for e.g 4 is No Service Impact",
+          "placeholder": "4",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Impact"
+        },
+        {
+          "title": "Priority",
+          "tooltip": "Priority number of the RF",
+          "description": "Priority number of the RF ,for e.g. 4 is Low",
+          "placeholder": "4",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Priority"
+        },
+        {
+          "title": "Urgency",
+          "tooltip": "Urgency of the RF",
+          "description": "Urgency of the RF, for e.g. 4 is Low",
+          "placeholder": "4",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Urgency"
+        },
+        {
+          "title": "Product Type",
+          "tooltip": "Product Type of the RF",
+          "description": "Product Type of the RF, for e.g. other",
+          "placeholder": "other",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "ProductType"
+        },
+        {
+          "title": "Requester Name",
+          "tooltip": "Requester of the RF",
+          "description": "Name of the Requester, who have raised the RF",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "RequestorName"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "operation": "get_rf",
+      "title": "Get RF - Request Fulfillment Ticket",
+      "description": "Retrieves details for a specific RF-Request Fulfillment Ticket request from the MFSM/HPSM server, based on the RF ID you have specified",
+      "category": "investigation",
+      "annotation": "get_rf",
+      "output_schema": {
+        "Request": {
+          "Open": "",
+          "Impact": "",
+          "Number": "",
+          "Status": "",
+          "Urgency": "",
+          "Category": "",
+          "Priority": "",
+          "SlaBreach": "",
+          "AssignedTo": "",
+          "SubmitDate": "",
+          "UpdateDate": "",
+          "CustVisible": "",
+          "Description": [],
+          "ProductType": "",
+          "Subcategory": "",
+          "AgreementIds": [],
+          "CurrentPhase": "",
+          "DeliveryDate": "",
+          "AssignedGroup": "",
+          "RequestorName": "",
+          "ApprovalStatus": "",
+          "BriefDescription": ""
+        },
+        "Messages": [],
+        "ReturnCode": ""
+      },
+      "parameters": [
+        {
+          "title": "RF - Request Fulfillment Ticket Number",
+          "tooltip": "ID of the RF-Request Fulfillment Ticket whose details you want to retrieve",
+          "description": "ID of the Request Fulfillment Ticket whose details you want to retrieve from the Micro Focus Service Manager server.",
+          "placeholder": "RF138474",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "rf_id"
+        }
+      ],
+      "enabled": true
+    },
+    {
       "operation": "update_rf_attachment",
-      "title": "Update RF for attachment",
-      "description": "Updates an existing RF to upload an attachment",
+      "title": "Update RF - Request Fulfillment Ticket for an attachment",
+      "description": "Updates an existing RF-Request Fulfillment Ticket to upload an attachment",
       "category": "investigation",
       "annotation": "update_rf_attachment",
       "output_schema": {
@@ -1580,9 +1580,9 @@
       },
       "parameters": [
         {
-          "title": "RF ID",
-          "tooltip": "ID of the RF request",
-          "description": "ID of the RF request",
+          "title": "RF-Request Fulfillment Ticket ID ",
+          "tooltip": "ID of the Request Fulfillment Ticket",
+          "description": "ID of the Request Fulfillment Ticket",
           "placeholder": "e.g RF138474",
           "required": true,
           "editable": true,
@@ -1592,8 +1592,8 @@
         },
         {
           "title": "Attachment Name",
-          "tooltip": "Attachment name of the RF request",
-          "description": "Attachment name of the RF request",
+          "tooltip": "Attachment name of the Request Fulfillment Ticket ",
+          "description": "Attachment name of the Request Fulfillment Ticket",
           "placeholder": "eml_as_attach.eml",
           "required": true,
           "editable": true,

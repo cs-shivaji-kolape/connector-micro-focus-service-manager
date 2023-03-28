@@ -2,7 +2,7 @@
 - Added the following new actions and its playbooks
   
   - Update Change
-  - Get RF
-  - Create RF
-  - Update RF for attachment
+  - Get RF - Request Fulfillment Ticket
+  - Create RF - Request Fulfillment Ticket
+  - Update RF - Request Fulfillment Ticket for an attachment
     
