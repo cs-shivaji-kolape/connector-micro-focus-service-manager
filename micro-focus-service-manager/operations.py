@@ -1,5 +1,5 @@
 """ Copyright start
-  Copyright (C) 2008 - 2022 Fortinet Inc.
+  Copyright (C) 2008 - 2023 Fortinet Inc.
   All rights reserved.
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
@@ -11,11 +11,10 @@ from urllib.parse import urlencode
 from connectors.core.connector import ConnectorError, get_logger
 from .constants import *
 
-
 logger = get_logger('micro-focus-service-manager')
 
 
-def make_rest_call(config, method, endpoint, body):
+def make_rest_call(config, method, endpoint, body, param_header):
     try:
         server_url = config['host'].strip('/')
         if not config['port']:
@@ -33,8 +32,15 @@ def make_rest_call(config, method, endpoint, body):
             'Authorization': temp,
             'Content-Type': 'application/json'
         }
-        response = requests.request(method=method, url=url, headers=headers, data=json.dumps(body),
-                                    verify=config['verify_ssl'])
+
+        # We are getting headers ONLY for Update RF attachment, and it needs body in string format
+        if param_header:
+            headers.update(param_header)
+            response = requests.request(method=method, url=url, headers=headers, data=body,
+                                        verify=config['verify_ssl'])
+        else:
+            response = requests.request(method=method, url=url, headers=headers, data=json.dumps(body),
+                                        verify=config['verify_ssl'])
 
         if response.ok:
             logger.info('Successfully got response from server')
@@ -98,7 +104,7 @@ def create_incident(config, params):
         temp_dict.update(json_input)
         params_dict = {'Incident': temp_dict}
         url = 'incidents'
-        return make_rest_call(config, 'post', url, params_dict)
+        return make_rest_call(config, 'post', url, params_dict, {})
     except Exception as err:
         logger.exception(str(err))
         raise ConnectorError(str(err))
@@ -135,7 +141,7 @@ def create_change(config, params):
         temp_dict['header'].update(json_input)
         params_dict = {'Change': temp_dict}
         url = 'changes'
-        return make_rest_call(config, 'post', url, params_dict)
+        return make_rest_call(config, 'post', url, params_dict, {})
     except Exception as err:
         logger.exception(str(err))
         raise ConnectorError(str(err))
@@ -155,7 +161,7 @@ def update_incident(config, params):
         temp_dict.update(json_input)
         params_dict = {'Incident': temp_dict}
         url = 'incidents/{}'.format(params.get('incident_id'))
-        return make_rest_call(config, 'put', url, params_dict)
+        return make_rest_call(config, 'put', url, params_dict, {})
     except Exception as err:
         logger.exception(str(err))
         raise ConnectorError(str(err))
@@ -176,7 +182,7 @@ def list_incidents(config, params):
     try:
         params_dict = _get_params(params)
         url = 'incidents?{}'.format(urlencode(params_dict))
-        return make_rest_call(config, 'get', url, {})
+        return make_rest_call(config, 'get', url, {}, {})
     except Exception as err:
         logger.exception(str(err))
         raise ConnectorError(str(err))
@@ -187,7 +193,7 @@ def list_changes(config, params):
         params_dict = _get_params(params)
         params_dict = {k: v for k, v in params_dict.items() if v is not None and v != ''}
         url = 'changes?{}'.format(urlencode(params_dict))
-        return make_rest_call(config, 'get', url, {})
+        return make_rest_call(config, 'get', url, {}, {})
     except Exception as err:
         logger.exception(str(err))
         raise ConnectorError(str(err))
@@ -197,7 +203,7 @@ def get_incident(config, params):
     try:
         incident_id = params.get('incident_id')
         url = 'incidents/{}'.format(incident_id)
-        return make_rest_call(config, 'get', url, {})
+        return make_rest_call(config, 'get', url, {}, {})
     except Exception as err:
         logger.exception(str(err))
         raise ConnectorError(str(err))
@@ -207,7 +213,7 @@ def get_change_request(config, params):
     try:
         change_request_id = params.get('change_request_id')
         url = 'changes/{}'.format(change_request_id)
-        return make_rest_call(config, 'get', url, {})
+        return make_rest_call(config, 'get', url, {}, {})
     except Exception as err:
         logger.exception(str(err))
         raise ConnectorError(str(err))
@@ -217,7 +223,7 @@ def get_device_list(config, params):
     try:
         params_dict = _get_params(params)
         url = 'devices?{}'.format(urlencode(params_dict))
-        return make_rest_call(config, 'get', url, {})
+        return make_rest_call(config, 'get', url, {}, {})
     except Exception as err:
         logger.exception(str(err))
         raise ConnectorError(str(err))
@@ -226,7 +232,7 @@ def get_device_list(config, params):
 def get_device(config, params):
     try:
         url = 'devices/{}'.format(params.get('config_item'))
-        return make_rest_call(config, 'get', url, {})
+        return make_rest_call(config, 'get', url, {}, {})
     except Exception as err:
         logger.exception(str(err))
         raise ConnectorError(str(err))
@@ -234,8 +240,76 @@ def get_device(config, params):
 
 def _check_health(config):
     try:
-        res = make_rest_call(config, 'get', 'incidents', {'count': 1})
+        res = make_rest_call(config, 'get', 'incidents', {'count': 1}, {})
         return True
+    except Exception as err:
+        logger.exception(str(err))
+        raise ConnectorError(str(err))
+
+
+def get_rf_request(config, params):
+    try:
+        change_rf_id = params.get('rf_id')
+        url = 'requests/{}'.format(change_rf_id)
+        return make_rest_call(config, 'get', url, {}, {})
+    except Exception as err:
+        logger.exception(str(err))
+        raise ConnectorError(str(err))
+
+
+def create_rf(config, params):
+    try:
+        payload_request = {}
+        fields = ['Impact', 'Urgency', 'Priority', 'Category', 'Subcategory', 'BriefDescription', 'AssignedTo',
+                  'AssignedGroup', 'RequestorName', 'ProductType']
+        for field in fields:
+            payload_request[field] = str(params.get(field))
+
+        payload_request['Description'] = ([params.get('Description')])
+
+        params_dict = {'Request': payload_request}
+        url = 'requests'
+        return make_rest_call(config, 'post', url, params_dict, {})
+    except Exception as err:
+        logger.exception(str(err))
+        raise ConnectorError(str(err))
+
+
+def update_rf_attachment(config, params):
+    try:
+        param_attachment_name = params.get('attachment_name')
+        body = params.get('msg_body')
+        url = 'requests/{}/attachments/cid:{}'.format(params.pop('rf_id'), param_attachment_name)
+
+        extra_header = {
+            'Content-Disposition': 'attachment;filename=' + param_attachment_name,
+            'Content-Type': 'application/vnd.ms-outlook'
+        }
+        return make_rest_call(config, 'post', url, body, extra_header)
+
+    except Exception as err:
+        logger.exception(str(err))
+        raise ConnectorError(str(err))
+
+
+def update_change(config, params):
+    try:
+        payload = dict()
+        payload['SubClosureCode'] = str(params.get('SubClosureCode'))
+
+        if params.get('PlannedStart') and params.get('PlannedEnd'):
+            payload['header'] = {'Phase': params.get('Phase'), 'PlannedStart': params.get('PlannedStart'),
+                                 'PlannedEnd': params.get('PlannedEnd')}
+        else:
+            payload['header'] = {'Phase': params.get('Phase')}
+        payload_close = {'ClosureCode': params.get('ClosureCode'), 'ClosingComments': [params.get('ClosingComments')]}
+        payload['close'] = payload_close
+
+        url = 'changes/{}'.format(params.pop('change_id'))
+
+        params_dict = {'Change': payload}
+
+        return make_rest_call(config, 'post', url, params_dict, {})
     except Exception as err:
         logger.exception(str(err))
         raise ConnectorError(str(err))
@@ -250,5 +324,10 @@ operations = {
     'get_device': get_device,
     'create_change': create_change,
     'get_change_request': get_change_request,
-    'list_changes': list_changes
+    'list_changes': list_changes,
+    'get_rf': get_rf_request,
+    'create_rf': create_rf,
+    'update_rf_attachment': update_rf_attachment,
+    'update_change': update_change
+
 }
