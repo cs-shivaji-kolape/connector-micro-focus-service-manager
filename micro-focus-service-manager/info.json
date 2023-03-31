@@ -9,7 +9,7 @@
   "category": "IT Service Management",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.3.0/micro-focus-service-manager/548/micro-focus-service-manager-v1-3-0",
   "configuration": {
     "fields": [
       {
@@ -1246,7 +1246,7 @@
     {
       "operation": "update_change",
       "title": "Update Change",
-      "description": "Updates an existing change for closure",
+      "description": "Updates an existing change for closure in Service Manager based on the change ID, closure code, phase, and other input parameters you have specified.",
       "category": "investigation",
       "annotation": "update_change",
       "output_schema": {
@@ -1291,7 +1291,7 @@
         {
           "title": "Change ID",
           "tooltip": "ID of the change request, you want to close",
-          "description": "ID of the change request, you want to close",
+          "description": "Specify the ID of the change request that you want to update for closure in the Micro Focus Service Manager server.",
           "placeholder": "e.g C127623",
           "required": true,
           "editable": true,
@@ -1302,7 +1302,7 @@
         {
           "title": "Closure Code",
           "tooltip": "Closure Code for the change request",
-          "description": "Closure Code for the change request",
+          "description": "Specify the closure code that you want to apply to the change request that you want to update for closure in the Micro Focus Service Manager server.",
           "required": true,
           "Placeholder": 1,
           "editable": true,
@@ -1313,7 +1313,7 @@
         {
           "title": "SubClosure Code",
           "tooltip": "Sub Closure Code for the change request",
-          "description": "Sub Closure Code for the change request",
+          "description": "Specify the sub-closure code that you want to apply to the change request that you want to update for closure in the Micro Focus Service Manager server.",
           "required": true,
           "Placeholder": "No Issues",
           "editable": true,
@@ -1324,7 +1324,7 @@
         {
           "title": "Closing Comments",
           "tooltip": "Closing Comments for the change you want to close",
-          "description": "Closing Comments for the change you want to close",
+          "description": "Specify the closing comments that you want to add to the change request that you want to update for closure in the Micro Focus Service Manager server.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1334,7 +1334,7 @@
         {
           "title": "Phase",
           "tooltip": "Phase of the change like logging, approve, close etc.",
-          "description": "Phase of the change like logging, approve, close etc",
+          "description": "Specify the phase of the change request that you want to update for closure in the Micro Focus Service Manager server. You can specify phases such as logging, approve, close, etc.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1343,7 +1343,7 @@
         },
         {
           "title": "Actual Start Time",
-          "description": "(Optional) Enter the actual start DateTime for the change request that you want to create in the Micro Focus Service Manager server.",
+          "description": "(Optional) Select the actual start DateTime of the change request that you want to update for closure in the Micro Focus Service Manager server.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -1352,7 +1352,7 @@
         },
         {
           "title": "Actual End Time",
-          "description": "(Optional) Enter the actual end DateTime for the change request that you want to create in the Micro Focus Service Manager server. ",
+          "description": "(Optional) Enter the actual end DateTime of the change request that you want to update for closure in the Micro Focus Service Manager server.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -1365,7 +1365,7 @@
     {
       "operation": "create_rf",
       "title": "Create RF - Request Fulfillment Ticket",
-      "description": "Creates a new RF - Request Fulfillment Ticket on the MFSM/HPSM Manager server, based on the input parameters you have specified.",
+      "description": "Creates a new RF - Request Fulfillment Ticket on the MFSM/HPSM Manager server, based on the title, description, category, priority, etc., and other input parameters you have specified.",
       "category": "investigation",
       "annotation": "create_rf",
       "output_schema": {
@@ -1400,7 +1400,7 @@
         {
           "title": "Title or Brief Description",
           "tooltip": "The title or Brief Description of the RF",
-          "description": "Title of the RF/Brief Description",
+          "description": "Title or brief description of the Request Fulfillment Ticket (RF) that you want to create on the Micro Focus Service Manager server.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1410,7 +1410,7 @@
         {
           "title": "Description",
           "tooltip": "Description of the RF",
-          "description": "Description of the RF",
+          "description": "Description of the Request Fulfillment Ticket (RF) that you want to create on the Micro Focus Service Manager server.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1420,7 +1420,7 @@
         {
           "title": "Category",
           "tooltip": "Category of RF",
-          "description": "Category to be assigned to the RF",
+          "description": "Category to be assigned to the RF that you want to create on the Micro Focus Service Manager server.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1431,7 +1431,7 @@
         {
           "title": "Subcategory",
           "tooltip": "Subcategory to be assigned to the RF",
-          "description": "Subcategory to be assigned to the RF.",
+          "description": "Subcategory to be assigned to the RF that you want to create on the Micro Focus Service Manager server.",
           "placeholder": "other",
           "required": true,
           "editable": true,
@@ -1442,7 +1442,7 @@
         {
           "title": "Assigned To",
           "tooltip": "Enter name of user to whom RF-Request Fulfillment Ticket is assigned",
-          "description": "Name of the user who will look after the RF",
+          "description": "Name of the user to whom you want to assign the RF that you want to create on the Micro Focus Service Manager server.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1452,7 +1452,7 @@
         {
           "title": "Assigned Group",
           "tooltip": "ID of RF-Request Fulfillment Ticket assigned Group",
-          "description": "ID of the RF-Request Fulfillment Ticket assigned group",
+          "description": "The ID of the group to which you want to assign the RF that you want to create on the Micro Focus Service Manager server.",
           "placeholder": "CSC",
           "required": true,
           "editable": true,
@@ -1463,7 +1463,7 @@
         {
           "title": "Impact",
           "tooltip": "Impact number of the RF",
-          "description": "Impact number of the RF ,for e.g 4 is No Service Impact",
+          "description": "Impact number to be assigned to the RF that you want to create on the Micro Focus Service Manager server. For example, 4 is 'No Service Impact'.",
           "placeholder": "4",
           "required": true,
           "editable": true,
@@ -1474,7 +1474,7 @@
         {
           "title": "Priority",
           "tooltip": "Priority number of the RF",
-          "description": "Priority number of the RF ,for e.g. 4 is Low",
+          "description": "Priority value to be assigned to the RF that you want to create on the Micro Focus Service Manager server. For example, 4 is 'Low'.",
           "placeholder": "4",
           "required": true,
           "editable": true,
@@ -1485,7 +1485,7 @@
         {
           "title": "Urgency",
           "tooltip": "Urgency of the RF",
-          "description": "Urgency of the RF, for e.g. 4 is Low",
+          "description": "Urgency value to be assigned to the RF that you want to create on the Micro Focus Service Manager server. For example, 4 is 'Low'.",
           "placeholder": "4",
           "required": true,
           "editable": true,
@@ -1496,7 +1496,7 @@
         {
           "title": "Product Type",
           "tooltip": "Product Type of the RF",
-          "description": "Product Type of the RF, for e.g. other",
+          "description": "Product Type to be assigned to the RF that you want to create on the Micro Focus Service Manager server. For example, other.",
           "placeholder": "other",
           "required": true,
           "editable": true,
@@ -1507,7 +1507,7 @@
         {
           "title": "Requester Name",
           "tooltip": "Requester of the RF",
-          "description": "Name of the Requester, who have raised the RF",
+          "description": "Name of the Requester, who has raised the RF that you want to create on the Micro Focus Service Manager server.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1520,7 +1520,7 @@
     {
       "operation": "get_rf",
       "title": "Get RF - Request Fulfillment Ticket",
-      "description": "Retrieves details for a specific RF-Request Fulfillment Ticket request from the MFSM/HPSM server, based on the RF ID you have specified",
+      "description": "Retrieves details for a specific RF-Request Fulfillment Ticket from the MFSM/HPSM server, based on the RF ID you have specified.",
       "category": "investigation",
       "annotation": "get_rf",
       "output_schema": {
@@ -1555,7 +1555,7 @@
         {
           "title": "RF - Request Fulfillment Ticket Number",
           "tooltip": "ID of the RF-Request Fulfillment Ticket whose details you want to retrieve",
-          "description": "ID of the Request Fulfillment Ticket whose details you want to retrieve from the Micro Focus Service Manager server.",
+          "description": "The ID of the Request Fulfillment Ticket whose details you want to retrieve from the Micro Focus Service Manager server.",
           "placeholder": "RF138474",
           "required": true,
           "editable": true,
@@ -1569,7 +1569,7 @@
     {
       "operation": "update_rf_attachment",
       "title": "Update RF - Request Fulfillment Ticket for an attachment",
-      "description": "Updates an existing RF-Request Fulfillment Ticket to upload an attachment",
+      "description": "Updates an existing RF-Request Fulfillment Ticket to upload (add) an attachment to that RF in Service Manager based on the RF ID, attachment name, and message body you have specified.",
       "category": "investigation",
       "annotation": "update_rf_attachment",
       "output_schema": {
@@ -1582,7 +1582,7 @@
         {
           "title": "RF-Request Fulfillment Ticket ID ",
           "tooltip": "ID of the Request Fulfillment Ticket",
-          "description": "ID of the Request Fulfillment Ticket",
+          "description": "The ID of the Request Fulfillment Ticket to which you want to add the attachment in the Micro Focus Service Manager server.",
           "placeholder": "e.g RF138474",
           "required": true,
           "editable": true,
@@ -1593,7 +1593,7 @@
         {
           "title": "Attachment Name",
           "tooltip": "Attachment name of the Request Fulfillment Ticket ",
-          "description": "Attachment name of the Request Fulfillment Ticket",
+          "description": "The name of the attachment name that you want to add to the specified RF in the Micro Focus Service Manager server.",
           "placeholder": "eml_as_attach.eml",
           "required": true,
           "editable": true,
@@ -1604,7 +1604,7 @@
         {
           "title": "Message Body",
           "tooltip": "Content of the file to be uploaded",
-          "description": "Content of the file  to be uploaded",
+          "description": "The content of the file to be uploaded to the specified RF in the Micro Focus Service Manager server.",
           "placeholder": "raw file data",
           "required": true,
           "editable": true,
