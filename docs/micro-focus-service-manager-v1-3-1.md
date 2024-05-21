@@ -16,10 +16,9 @@ Following enhancements have been made to the Micro Focus Service Manager Connect
 <li><p>Added the following new actions and its playbooks</p>
 
 <ul>
-<li><p>Update Change</p></li>
-<li><p>Get RF - Request Fulfillment Ticket</p></li>
-<li><p>Create RF - Request Fulfillment Ticket</p></li>
-<li><p>Update RF - Request Fulfillment Ticket for an attachment</p></li>
+<li><p>Retrieve Attachment Information</p></li>
+<li><p>Download Attachment</p></li>
+<li><p>Delete Attachment</p></li>
 </ul></li>
 </ul>
 ## Installing the connector
@@ -711,18 +710,21 @@ The output contains the following populated JSON schema:
 ## Included playbooks
 The `Sample - micro-focus-service-manager - 1.3.1` playbook collection comes bundled with the Micro Focus Service Manager connector. These playbooks contain steps using which you can perform all supported actions. You can see bundled playbooks in the **Automation** > **Playbooks** section in FortiSOAR<sup>TM</sup> after importing the Micro Focus Service Manager connector.
 
-- Change: Create Change
-- Change: Get Change List
-- Change: Get Change Request
-- Create RF
-- Device: Get Device
-- Device: Get Device List
-- Get RF
-- Incident: Create Incident
-- Incident: Get Incident
-- Incident: Get Incident List
-- Incident: Update Incident
+- Create Change
+- Create Incident
+- Create RF - Request Fulfillment Ticket
+- Delete Attachment
+- Download Attachment
+- Get Change List
+- Get Change Request
+- Get Device
+- Get Device List
+- Get Incident
+- Get Incident List
+- Get RF - Request Fulfillment Ticket
+- Retrieve Attachment Information
 - Update Change
-- Update RF
+- Update Incident
+- Update RF - Request Fulfillment Ticket for an attachment
 
 **Note**: If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.
