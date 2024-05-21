@@ -315,6 +315,38 @@ def update_change(config, params):
         raise ConnectorError(str(err))
 
 
+def retrieve_attachment_information(config, params):
+    try:
+        incident_id = params.get('incident_id')
+        url = 'incidents/{}/attachments'.format(incident_id)
+        return make_rest_call(config, 'get', url, {}, {})
+    except Exception as err:
+        logger.exception(str(err))
+        raise ConnectorError(str(err))
+
+
+def download_an_attachment(config, params):
+    try:
+        incident_id = params.get('incident_id')
+        attachment_id = params.get('attachment_id')
+        url = 'incidents/{}/attachments/{}'.format(incident_id, attachment_id)
+        return make_rest_call(config, 'get', url, {}, {})
+    except Exception as err:
+        logger.exception(str(err))
+        raise ConnectorError(str(err))
+
+
+def delete_an_attachment(config, params):
+    try:
+        incident_id = params.get('incident_id')
+        attachment_id = params.get('attachment_id')
+        url = 'incidents/{}/attachments/{}'.format(incident_id, attachment_id)
+        return make_rest_call(config, 'delete', url, {}, {})
+    except Exception as err:
+        logger.exception(str(err))
+        raise ConnectorError(str(err))
+
+
 operations = {
     'create_incident': create_incident,
     'update_incident': update_incident,
@@ -328,6 +360,9 @@ operations = {
     'get_rf': get_rf_request,
     'create_rf': create_rf,
     'update_rf_attachment': update_rf_attachment,
-    'update_change': update_change
+    'update_change': update_change,
+    'retrieve_attachment_information': retrieve_attachment_information,
+    'download_an_attachment': download_an_attachment,
+    'delete_an_attachment': delete_an_attachment
 
 }
