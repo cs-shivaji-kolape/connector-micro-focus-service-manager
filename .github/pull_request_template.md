@@ -1,6 +1,8 @@
 #### Descriptions:
-_Add PR descriptions here_
-
-#### Fix:
-_Add fix/changes here_
+- Added the following missing actions 
+#### Added:
+- Added the following new actions and its playbooks
+    - Retrieve Attachment Information
+    - Download Attachment
+    - Delete Attachment
 

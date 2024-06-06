@@ -1,15 +1,15 @@
 {
   "name": "micro-focus-service-manager",
   "label": "Micro Focus Service Manager",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Micro Focus service manager connector helps you to create incident, update incident, list incidents, get incident, get device list and get device",
-  "publisher": "Fortinet",
+  "publisher": "SpryIQ.Co",
   "cs_approved": false,
   "cs_compatible": true,
   "category": "IT Service Management",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.3.0/micro-focus-service-manager/548/micro-focus-service-manager-v1-3-0",
+  "help_online": "https://github.com/jitesh-spryiq/connector-micro-focus-service-manager/blob/develop/docs/micro-focus-service-manager-v1-3-1.md",
   "configuration": {
     "fields": [
       {
@@ -1614,6 +1614,102 @@
         }
       ],
       "enabled": true
-    }
+    },
+    {
+            "operation": "retrieve_attachment_information",
+            "title": "Retrieve Attachment Information",
+            "description": "Request on the Resource Attachment Collection of an incident identified by incident number.",
+            "category": "investigation",
+            "annotation": "retrieve_attachment_information",
+            "output_schema": {
+                "@count": "",
+                "@start": "",
+                "@totalcount": "",
+                "Messages": [],
+                "ResourceName": "",
+                "ReturnCode": "",
+                "content": []
+            },
+            "parameters": [
+                {
+                    "title": "Incident ID",
+                    "description": "ID of the incident whose details you want to retrieve from the Micro Focus Service Manager server.",
+                    "placeholder": "e.g IM10003",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "tooltip": "ID of the incident whose details you want to retrieve from the Micro Focus Service Manager server.",
+                    "name": "incident_id"
+                }
+            ],
+            "enabled": true
+        },
+    {
+            "operation": "download_an_attachment",
+            "title": "Download Attachment",
+            "description": "Download an attachment associated with an incident identified by attachment number and incident number.",
+            "category": "investigation",
+            "annotation": "download_an_attachment",
+            "output_schema": [],
+            "parameters": [
+                {
+                    "title": "Incident ID",
+                    "description": "ID of the incident associated with the Attachment which you want to download from the Micro Focus Service Manager server.",
+                    "placeholder": "e.g IM10003",
+                    "tooltip": "ID of the incident associated with the Attachment which you want to download from the Micro Focus Service Manager server.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "incident_id"
+                },
+                {
+                    "title": "Attachment ID",
+                    "description": "ID of the attachment which you want to download from the Micro Focus Service Manager server.",
+                    "placeholder": "e.g 58ac7b3200242211802b29a8",
+                    "tooltip": "ID of the attachment which you want to download from the Micro Focus Service Manager server.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "attachment_id"
+                }
+            ],
+            "enabled": true
+        },
+    {
+            "operation": "delete_an_attachment",
+            "title": "Delete Attachment",
+            "description": "Delete an attachment associated with an incident identified by attachment number and incident number.",
+            "category": "investigation",
+            "annotation": "delete_an_attachment",
+            "output_schema": [],
+            "parameters": [
+                {
+                    "title": "Incident ID",
+                    "description": "ID of the incident associated with the Attachment which you want to delete from the Micro Focus Service Manager server.",
+                    "placeholder": "e.g IM10003",
+                    "tooltip": "ID of the incident associated with the Attachment which you want to delete from the Micro Focus Service Manager server.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "incident_id"
+                },
+                {
+                    "title": "Attachment ID",
+                    "description": "ID of the attachment which you want to delete from the Micro Focus Service Manager server.",
+                    "placeholder": "e.g 58ac7b3200242211802b29a8",
+                    "tooltip": "ID of the attachment which you want to delete from the Micro Focus Service Manager server.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "attachment_id"
+                }
+            ],
+            "enabled": true
+        }
   ]
 }
