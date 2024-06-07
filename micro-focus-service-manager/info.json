@@ -1,7 +1,7 @@
 {
   "name": "micro-focus-service-manager",
   "label": "Micro Focus Service Manager",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "Micro Focus service manager connector helps you to create incident, update incident, list incidents, get incident, get device list and get device",
   "publisher": "SpryIQ.Co",
   "cs_approved": false,
