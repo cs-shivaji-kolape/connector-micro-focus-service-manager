@@ -9,7 +9,7 @@
   "category": "IT Service Management",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "https://github.com/jitesh-spryiq/connector-micro-focus-service-manager/blob/develop/docs/micro-focus-service-manager-v1-3-1.md",
+  "help_online": "",
   "configuration": {
     "fields": [
       {
